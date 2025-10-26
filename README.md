@@ -62,3 +62,24 @@ git commit -m "Initial commit - currency converter"
 ```
 
 If you want, I can initialize the local git repo and make the first commit for you. I cannot create/push to a GitHub repo without your credentials or a remote URL; you can either create the GitHub repo yourself and paste the remote URL here, or I can show exact commands for the GitHub web or gh CLI.
+ 
+CI (GitHub Actions)
+--------------------
+I added a basic GitHub Actions workflow at `.github/workflows/ci.yml` that will run on pushes and PRs to `main`. It installs server dependencies and builds the React client to verify the project builds successfully.
+
+Create a non-root DB user (recommended)
+------------------------------------
+I've added `server/create_db_user.sql`. Run it in MySQL Workbench (as root) to create a limited `converter` user with SELECT privileges on the `exchange_rates` table. After running, update `server/.env` to use the new user and password.
+
+How to commit & push these final changes
+---------------------------------------
+Run these commands in a fresh Command Prompt (after installing Git):
+
+```cmd
+cd "C:\Users\P KARUNAKARAN\Downloads\FSD PROJECT"
+git add .
+git commit -m "Add CI workflow and DB user script"
+git push
+```
+
+If `git push` prompts for credentials, use your GitHub username and paste your Personal Access Token as the password.
